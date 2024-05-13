@@ -24,7 +24,23 @@ Requirements:
     - Write code that generates options for the actities `<select>` from the activies that match the selected category. Use the `name` property for the `textContent` and the `id` property `value` for each option you generate. 
     - Be Sure to include a default option that says **Select an Activity** with an empty string as it's value.
 
-    **Here are some functions that will help**  
+- **When an activity is selected, information about that activity to the user**
+    - Add a `<div>` to the `activities.html` with an `id` property to display the information about the selected activity
+    - In `scripts/activities.js` listen for the change event on the activites dropdown created above using `addEventListener` in the `window.onload` function. 
+    - Create a function that is called with the event listener that finds the selected activity in the `activites` array. You can leverege the `selectedIndex` property of the dropdown list to find the matching activity in the `activities` array.
+    - Display the details of the seleted activity to the user in the `<div>` created above. **Consider creating a function you can call that takes an activity as a parameter and handles displaying the information on the page.**
+
+- **(STRETCH GOAL) display a form to purchase an e-ticket if the price of the activity is more than $0.00**
+    - Create a form on the page with the following fields:
+       - the number of tickets needed
+       - a credit card number
+       - an email address
+       - a purchase/submit button
+       - a reset button
+    - If the user clicks the purchase button, display the following message.
+        >Your credit card has been charged $(amount) for (number-of- tickets) to (adventure-name). A confirmation email has been sent to (email).
+
+    **Here are some functions that will help you be successful**  
     ```js
 
     //This function will hide or show an HTML element on the page
