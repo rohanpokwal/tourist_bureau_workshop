@@ -34,6 +34,7 @@ Requirements:
     - Create a function that is called with the event listener that finds the selected activity in the `activities` array. You can leverage the `selectedIndex` property of the dropdown list to find the matching activity in the `activities` array.
     - Display the details of the selected activity to the user in the `<div>` created above. **Consider creating a function that takes an activity as a parameter and handles displaying the information about the activity on the page.**
     - Make a commit and push your changes to GitHub
+    
 
     >remeber to clear the activies select everytime a new category is selected. You can set the dropdown lists `length` property to 0 to clear the options.
     **Example**
