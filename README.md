@@ -10,6 +10,9 @@ A home page with informational text/images promoting the town and navigation lin
 to the other pages. It needs a professional, but minimalistic appearance. Their budget
 for this project is tiny!
 
+## Activities Page (required)
+The page will feature a dropdown list that contains the types (categories) of activities offered by vendors in our community. Once users select a category they will be presented with a list activites in that category. When they select an activity, they will be presented with details and options about that activity.
+
 Requirements: 
 - **Display a dropdown list of the provided categories to the user**
     - Add a `<select>` to the `activities.html` with a matching `id` and `name` property do display the categories
@@ -30,7 +33,7 @@ Requirements:
     - Create a function that is called with the event listener that finds the selected activity in the `activites` array. You can leverege the `selectedIndex` property of the dropdown list to find the matching activity in the `activities` array.
     - Display the details of the seleted activity to the user in the `<div>` created above. **Consider creating a function you can call that takes an activity as a parameter and handles displaying the information on the page.**
 
-- **(STRETCH GOAL) display a form to purchase an e-ticket if the price of the activity is more than $0.00**
+- **(OPTIONAL STRETCH GOAL) display a form to purchase an e-ticket if the price of the activity is more than $0.00**
     - Create a form on the page with the following fields:
        - the number of tickets needed
        - a credit card number
@@ -84,3 +87,11 @@ Requirements:
     let matches = getActivitiesInCategory(activities, "Adventures"); 
 
     ```
+
+## Hiking Page (Optional)
+**This page is a bonus page. Make sure to do a good job on the activities page before attempting this page.**
+The page will feature a dropdown list of local hikes loaded from the data. Make sure a "Select a Hike" option appears in the dropdown list. When the user selects a hike, details about that hike will be displayed along with two images (one taken along the hike and another showing a trail map). Sample images are included in the images folder.
+To see how to change the source for an image programmatically using JavaScript, see the following:
+
+- Changing src: https://www.w3schools.com/jsref/prop_img_src.asp
+- Changing alt: https://www.w3schools.com/jsref/prop_img_alt.asp
