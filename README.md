@@ -12,7 +12,7 @@ for this project is tiny!
 
 Requirements: 
 - Display a dropdown of the provided categories to the user
-    - [ ] Add a `<select>` to the `activities.html` with a matching `id` and `name` property
-    - [ ] In `scripts/activities.js` write code that populates your `<select>` with the data in the categories array. Use the activity name for the `textContent` and `value` for each option you generate.
-    - [ ] Be Sure to include a default option that says **Select an Activity** with an empty string as it's value.
+    - Add a `<select>` to the `activities.html` with a matching `id` and `name` property
+    - In `scripts/activities.js` write code that populates your `<select>` with the data in the categories array. Use the activity name for the `textContent` and `value` for each option you generate.
+    - Be Sure to include a default option that says **Select an Activity** with an empty string as it's value.
 - 
