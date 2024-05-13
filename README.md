@@ -35,6 +35,12 @@ Requirements:
     - Display the details of the selected activity to the user in the `<div>` created above. **Consider creating a function that takes an activity as a parameter and handles displaying the information about the activity on the page.**
     - Make a commit and push your changes to GitHub
 
+    >remeber to clear the activies select everytime a new category is selected. You can set the dropdown lists `length` property to 0 to clear the options.
+    **Example**
+    ```js
+    someDropdown.length = 0;
+    ```
+
 - **(OPTIONAL STRETCH GOAL) display a form to purchase an e-ticket if the price of the activity is more than $0.00**
     - Create a form on the page with the following fields:
        - the number of tickets needed
