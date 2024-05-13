@@ -120,8 +120,20 @@ let activities = [
 ];
 
 window.onload = function () {
+  //get access of selectCategories
+  let selectCategories = document.querySelector("#selectCategories");
+  let selectActivities = document.querySelector("#selectActivities");
+
+  //get access to the form
+  let categoriesForm = document.querySelector("#categoriesForm");
   //this function will populate the dropdown options for users to select
   initiateCategoriesDropDown();
+
+  //add a event listener to have the another dropdown menu with activities based on what user select (in this case it is category)
+  selectCategories.addEventListener("change", initiateActivitiesDropDown);
+
+  //add a event listener to display result based on what activity user picks
+  categoriesForm.addEventListener("submit", displayResult);
 };
 
 //Function to add options to the select (dropdown menu)
@@ -144,4 +156,85 @@ function initiateCategoriesDropDown() {
     newOption.value = categories[i];
     selectCategories.appendChild(newOption);
   }
+}
+
+//Function to add options to the select (dropdown menu) in this case categories
+function initiateActivitiesDropDown() {
+  //get access to activities dropdown menu
+  let selectActivities = document.querySelector("#selectActivities");
+  selectActivities.length = 0;
+  //get the value of whatever the user selected and pass this value to the getActivitiesInCategory function which match with the category
+  let selectedCategories = document.querySelector("#selectCategories").value;
+
+  //this will give me the array of that matched category
+  //Now play with this array to populate the activities
+  let activityMatchedCategory = getActivitiesInCategory(
+    activities,
+    selectedCategories
+  );
+
+  //Adding the default options
+  let defaultOption = document.createElement("option");
+  defaultOption.textContent = "Select an Activity";
+  defaultOption.value = "";
+  selectActivities.appendChild(defaultOption);
+
+  //Add all the activities in the dropdown based on what user selects
+  let activitiesLength = activityMatchedCategory.length;
+  for (let i = 0; i < activitiesLength; i++) {
+    //add each category as newOption
+    let newOption = document.createElement("option");
+    newOption.textContent = activityMatchedCategory[i].name;
+    newOption.value = activityMatchedCategory[i].id;
+    selectActivities.appendChild(newOption);
+  }
+}
+
+//This function will return a a list of the matching activities for a given category
+//Just pass it the array of activities and the category you are looking for
+function getActivitiesInCategory(activities, category) {
+  //start by creating an empty list to hold our matches
+  let matching = [];
+
+  //number of items on the menu
+  let numItems = activities.length;
+
+  //loop over the activities to find matches
+  for (let i = 0; i < numItems; i++) {
+    if (activities[i].category === category) {
+      //add that activity to our matches array
+      matching.push(activities[i]);
+    }
+  }
+
+  //return all the matching menu items
+  return matching;
+}
+
+//This function will display the result
+function displayResult(event) {
+  //keep the form from reloading the page
+  event.preventDefault();
+
+  //get access to select an activity dropdown
+  let selectActivities = document.querySelector("#selectActivities");
+
+  //get access to div for result
+  let resultdiv = document.querySelector("#displayResult");
+
+  //get the index of what user selects in Activity
+  let selectedIndex = selectActivities.selectedIndex - 1;
+
+  //this is what user selected which returns an object
+  let selectedActivity = activities[selectedIndex];
+  console.log(selectedActivity);
+
+  //put the result in a div
+  resultdiv.innerHTML = `
+  <div>Category: ${selectedActivity.category}</div>
+  <div>Name: ${selectedActivity.name}</div>
+  <div>Location: ${selectedActivity.location}</div>
+  <div>Description: ${selectedActivity.description}</div>
+
+ `;
 }
