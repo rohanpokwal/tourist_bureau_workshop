@@ -16,8 +16,9 @@ The page will feature a dropdown list that contains the types (categories) of ac
 Requirements: 
 - **Display a dropdown list of the provided categories to the user**
     - Add a `<select>` to the `activities.html` with a matching `id` and `name` property to display the categories
-    - In `scripts/activities.js` write code that generates options for the categories `<select>` using the data in the `categories` array provided. Use the activity for the `textContent` and `value` for each option you generate.
+    - In `scripts/activities.js` write a function that generates options for the categories `<select>` using the data in the `categories` array provided. Use the activity for the `textContent` and `value` for each option you generate.
     - Be sure to include a default option that says **Select an Activity** with an empty string as its value.
+    - Call the function in the `window.onload` function to populate the dropdown list with the options when the page loads
     - Make a commit and push your changes to GitHub
 
 - **When a category is selected, display a dropdown of matching activities**
