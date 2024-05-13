@@ -95,3 +95,8 @@ To see how to change the source for an image programmatically using JavaScript, 
 
 - Changing src: https://www.w3schools.com/jsref/prop_img_src.asp
 - Changing alt: https://www.w3schools.com/jsref/prop_img_alt.asp
+
+## Video Page (Optional)
+**This page is a bonus page. Make sure to do a good job on the activities page before attempting this page.**
+A page that lets tourists watch a video about the area. You can use any YouTube video
+(or other source) you find that seems reasonable.
