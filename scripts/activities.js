@@ -100,3 +100,7 @@ let activities = [
         price: 0.00 
     }
 ];
+
+window.onload = function(){
+
+}

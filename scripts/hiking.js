@@ -29,3 +29,8 @@ let hikes = [
         difficulty: 2 
      },
  ];
+
+ window.onload = function(){
+
+   
+ }
