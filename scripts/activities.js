@@ -120,9 +120,14 @@ let activities = [
 ];
 
 window.onload = function () {
+  //hide the purchase info first
+  hideElement();
   //get access of selectCategories
   let selectCategories = document.querySelector("#selectCategories");
   let selectActivities = document.querySelector("#selectActivities");
+
+  //get access to the payment form
+  let purchaseForm = document.querySelector("#purchaseForm");
 
   //get access to the form
   let categoriesForm = document.querySelector("#categoriesForm");
@@ -134,6 +139,8 @@ window.onload = function () {
 
   //add a event listener to display result based on what activity user picks
   categoriesForm.addEventListener("submit", displayResult);
+
+  purchaseForm.addEventListener("submit", displayPurchasedMessage);
 };
 
 //Function to add options to the select (dropdown menu)
@@ -216,6 +223,18 @@ function displayResult(event) {
   //keep the form from reloading the page
   event.preventDefault();
 
+  //get the value of whatever the user selected and pass this value to the getActivitiesInCategory function which match with the category
+  //you must call this here too
+  let selectedCategories = document.querySelector("#selectCategories").value;
+
+  //this will give me the array of that matched category
+  //Now play with this array to populate the activities
+
+  let activityMatchedCategory = getActivitiesInCategory(
+    activities,
+    selectedCategories
+  );
+
   //get access to select an activity dropdown
   let selectActivities = document.querySelector("#selectActivities");
 
@@ -226,15 +245,71 @@ function displayResult(event) {
   let selectedIndex = selectActivities.selectedIndex - 1;
 
   //this is what user selected which returns an object
-  let selectedActivity = activities[selectedIndex];
-  console.log(selectedActivity);
+  let selectedActivity = activityMatchedCategory[selectedIndex];
 
   //put the result in a div
   resultdiv.innerHTML = `
-  <div>Category: ${selectedActivity.category}</div>
-  <div>Name: ${selectedActivity.name}</div>
-  <div>Location: ${selectedActivity.location}</div>
-  <div>Description: ${selectedActivity.description}</div>
-
+  <div><strong>Category:</strong> ${selectedActivity.category}</div>
+  <div><strong>Name:</strong> ${selectedActivity.name}</div>
+  <div><strong>Location:</strong> ${selectedActivity.location}</div>
+  <div><strong>Description:</strong> ${selectedActivity.description}</div>
+  <div><strong>Price:</strong> ${selectedActivity.price}</div>
  `;
+
+  //check if the price is greator than 0 if so call the showElement function
+  if (selectedActivity.price > 0) {
+    showElement();
+  } else {
+    hideElement();
+  }
+}
+
+function displayPurchasedMessage(event) {
+  //keep the form from reloading the page
+  event.preventDefault();
+
+  //get the value of whatever the user selected and pass this value to the getActivitiesInCategory function which match with the category
+  //you must call this here too
+  let selectedCategories = document.querySelector("#selectCategories").value;
+
+  //this will give me the array of that matched category
+  //Now play with this array to populate the activities
+
+  let activityMatchedCategory = getActivitiesInCategory(
+    activities,
+    selectedCategories
+  );
+
+  //get access to select an activity dropdown
+  let selectActivities = document.querySelector("#selectActivities");
+
+  //get access to div for result
+  let displayMessage = document.querySelector("#displayMessage");
+
+  //get the index of what user selects in Activity
+  let selectedIndex = selectActivities.selectedIndex - 1;
+
+  //this is what user selected which returns an object
+  let selectedActivity = activityMatchedCategory[selectedIndex];
+
+  //get number of tickets that user has
+  let numTickets = Number(document.querySelector("#numTickets").value);
+
+  let amount = numTickets * selectedActivity.price;
+
+  displayMessage.innerHTML = `Your Credit card has been charged $<strong> ${amount}</strong> for<strong> ${numTickets}</strong> tickets to<strong> ${selectedActivity.name}</strong>`;
+}
+
+//This function will hide an HTML element on the page
+//Just pass it the id of the element you want to hide
+function hideElement() {
+  let el = document.querySelector("#purchaseForm");
+  el.style.display = "none";
+}
+
+//This function will show an HTML element on the page
+//Just pass it the id of the element you want to show
+function showElement() {
+  let el = document.querySelector("#purchaseForm");
+  el.style.display = "block";
 }
